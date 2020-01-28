@@ -1,0 +1,146 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  p h4 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FBFBFB;
+    display: grid;
+    row-gap: 16px;
+    padding: 16px;
+    justify-items: center;
+    align-content: start;
+  }
+
+  #background {
+    display: grid;
+    width: 100%;
+    row-gap: 8px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .foreground {
+    color: black;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .shadow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #colorGrid {
+    width: 100%;
+    padding: 8px;
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-self: center;
+  }
+
+  .colorBox {
+    height: 16px;
+    width: 16px;
+    background-color: #000000;
+    border-radius: 4px;
+  }
+
+  .color {
+    /* background-color: red; */
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto auto;
+    font-size: 12px;
+    align-items: center;
+  }
+
+  #swap {
+    cursor: pointer;
+    justify-self: center;
+  }
+
+  #swap:hover {
+    stroke: #000000;
+  }
+
+  .largeText {
+    font-size: 18px;
+  }
+</style>
+<div id="container">
+  <div id="background" class="shadow">
+    <p class="foreground">The quick brown fox</p>
+    <p class="foreground largeText">The quick brown fox</p>
+  </div>
+  <div id="colorGrid">
+    <div class="color ">
+      <div class="colorBox shadow"></div>
+      <p id="bgValue">#000000</p>
+    </div>
+    <svg height="24" width="24" id="swap" stroke="#636363" xmlns="http://www.w3.org/2000/svg" fill="none"
+      viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 1l4 4-4 4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 11V9c0-1.06087.42143-2.07828 1.17157-2.82843C4.92172 5.42143 5.93913 5 7 5h14M7 23l-4-4 4-4" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M21 13v2c0 1.0609-.4214 2.0783-1.1716 2.8284C19.0783 18.5786 18.0609 19 17 19H3" />
+    </svg>
+    <!-- <button id="swap">Swap colors</button> -->
+    <div class="color">
+      <div class="colorBox shadow foreground"></div>
+      <p id="fgValue">#ffffff</p>
+    </div>
+  </div>
+  <h2 id="contrast" style="color: black;"> 21:1</h2>
+  <h4 id="largeTextStatus" class="largeText"></h4>
+  <p id="normalTextStatus" style="color: black;"></p>
+</div>
+<script>
+  function changeText(id, text) {
+    const element = document.getElementById(id)
+    return element.innerHTML = text
+  }
+
+  function changeStyle(id, style) {
+    const element = document.getElementById(id)
+    return element.style = style
+  }
+  window.onmessage = async event => {
+    const background = document.getElementById('background')
+    const backgroundHex = document.getElementById('bgValue')
+    const foreground = document.getElementsByClassName('foreground')
+    const fgValue = document.getElementById('fgValue')
+    const contrast = document.getElementById('contrast')
+    const largeTextStatus = document.getElementById('largeTextStatus')
+    const normalTextStatus = document.getElementById('normalTextStatus')
+    const message = event.data.pluginMessage
+
+    if (message.type === 'selectionChange') {
+      background.style = `background-color: #${message.background};`
+      backgroundHex.innerHTML = `#${message.background};`
+      // foreground.map(element => element.style = `color: ${message.foreground};`)
+      for (let i = 0; i < foreground.length; i++) {
+        foreground[i].style = `color: #${message.foreground};`
+      }
+      fgValue.innerHTML = `#${message.foreground};`
+      contrast.innerHTML = message.contrast + ':1'
+      largeTextStatus.innerHTML = 'large text: ' + message.largeTextStatus
+      normalTextStatus.innerHTML = "normal text: " + message.normalTextStatus
+    }
+  }
+  document.getElementById('swap').onclick = () => {
+
+    parent.postMessage({ pluginMessage: { type: 'swap' } }, '*')
+  }
+</script>

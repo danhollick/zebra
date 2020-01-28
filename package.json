@@ -1,0 +1,24 @@
+{
+  "name": "zebra",
+  "version": "1.0.0",
+  "description": "a contrast plugin for Figma",
+  "main": "code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-html": "^4.0.6",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^4.0.0",
+    "prettier": "^1.14.3"
+  },
+  "author": "me",
+  "license": "ISC"
+}
