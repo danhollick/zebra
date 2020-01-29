@@ -23,7 +23,6 @@ function overlay(foreground, background) {
     )
   }
   overlaid[3] = alpha + background[3] * (1 - alpha)
-  console.log(overlaid)
   return overlaid
 }
 
@@ -54,7 +53,6 @@ function convertRgbToHex(r, g, b) {
 }
 
 function sendContrastInfo(foregroundElement, backgroundElement) {
-  //   console.log(backgroundElement, foregroundElement)
   let largeTextStatus
   let normalTextStatus
   const foregroundColor = [
