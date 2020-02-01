@@ -120,7 +120,7 @@
         ]
     },
     "plugins": [
-        //html
+        "html",
         "prettier"
     ]
 }

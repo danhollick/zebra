@@ -20,5 +20,8 @@
     "prettier": "^1.14.3"
   },
   "author": "me",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.7.5"
+  }
 }

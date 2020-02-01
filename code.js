@@ -119,6 +119,7 @@ figma.ui.onmessage = msg => {
   if (msg.type === 'swap') {
     if (figma.currentPage.selection.length > 1) {
       // ugly variable swapping here
+
       const tempForeground = foreground
       const tempBackground = background
       foreground = tempBackground
