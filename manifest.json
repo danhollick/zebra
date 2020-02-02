@@ -2,6 +2,6 @@
   "name": "zebra",
   "id": "803554869872985032",
   "api": "1.0.0",
-  "main": "code.js",
-  "ui": "ui.html"
+  "main": "step1/code.js",
+  "ui": "step1/ui.html"
 }
