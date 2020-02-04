@@ -1,0 +1,22 @@
+<div id="background">
+  <h3 id="foreground">The quick brown fox</h3>
+</div>
+<h2 id="contrast"> </h2>
+<button id="swap">swap colours</button>
+<script>
+window.onmessage = async event => {
+  const message = event.data.pluginMessage
+  console.log(message)
+  if (message.type === 'selectionChange') {
+    const background = document.getElementById('background')
+    const foreground = document.getElementById('foreground')
+    const contrast = document.getElementById('contrast')
+    background.style = `background-color: ${message.background};`
+    foreground.style = `color: ${message.foreground};`
+    contrast.textContent = message.contrast
+  }
+}
+document.getElementById('swap').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'swap' } }, '*')
+}
+</script>
