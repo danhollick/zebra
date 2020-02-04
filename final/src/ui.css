@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  p,
+  h4,
+  h3,
+  h2, 
+  h5 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .FAIL {
+    color: #F34242;
+  }
+
+  .AA {
+    color: #6BBE96;
+  }
+
+  .AAA {
+    color: #00DA71;
+  }
+
+  #container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FBFBFB;
+    display: grid;
+    row-gap: 16px;
+    padding: 16px;
+    justify-items: center;
+    align-content: start;
+  }
+
+  #background-container {
+    display: grid;
+    width: 100%;
+    row-gap: 8px;
+    padding: 24px;
+    border-radius: 16px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .shadow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #colorGrid {
+    width: 100%;
+    padding: 8px;
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-self: center;
+  }
+
+  .colorBox {
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+  }
+
+  .color {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto auto;
+    font-size: 12px;
+    align-items: center;
+  }
+
+  #swap {
+    cursor: pointer;
+    justify-self: center;
+  }
+
+  #swap:hover {
+    stroke: #000000;
+  }
