@@ -23,7 +23,7 @@ Open `manifest.json` and change the 'main' and 'ui' fields to the step you want 
 
 ```
 "main": "step1/code.js",
-  "ui": "step2/ui.html"
+  "ui": "step1/ui.html"
 ```
 
 #### Note:
