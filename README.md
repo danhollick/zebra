@@ -1,22 +1,44 @@
-This plugin template uses Typescript. If you are familiar with Javascript, Typescript will
-look very familiar. In fact, valid Javascript code is already valid Typescript code.
+### Zebra is a fast, lightweight colour contrast checker plugin for Figma.
+![image](https://cdn-images-1.medium.com/max/800/1*DXkmk6IFQR0tKzCeKXTnJw.gif)
 
-Typescript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+This repo is split up into steps that track with a tutorial. Which can be found [here](https://medium.com/@danhollick/figma-plugin-tutorial-1-6-65fc2102506).
 
-For more information, visit https://www.typescriptlang.org/
+The plugin can be found [here](https://www.figma.com/c/plugin/806578669827234193/zebra)
 
-Using Typescript requires a compiler to convert Typescript (code.ts) into Javascript (code.js)
-for the browser to run.
+### Local Development:
+It should be pretty straight forward to run the plugin code from any of the steps in Figma as there are no dependencies, only dev dependencies for webpack and linting. 
 
-To get the TypeScript compiler working:
+#### Step 1
+Download or clone the repo.
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Install the TypeScript compiler globally: `sudo npm install -g typescript`.
-3. Open this directory in Visual Studio Code.
-4. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "tsc: watch - tsconfig.json". You will have to do this again every time
-    you reopen Visual Studio Code.
+#### Step 2
+Open Figma and in the menu go to `Plugins` -> `Development` -> `New Plugin`.
+![image](https://cdn-images-1.medium.com/max/800/1*4D2TPssw664SjCq2rLdLjA.png)
 
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+#### Step 3
+Choose Link to Existing Plugin and find the zebra `manifest.json`
+
+#### Step 4
+Open `manifest.json` and change the 'main' and 'ui' fields to the step you want to run. ie:
+
+```
+"main": "step1/code.js",
+  "ui": "step2/ui.html"
+```
+
+#### Note:
+The code in the **final** folder is bundled with webpack so to change any code in `final/src/...` you need to have node and npm working.
+
+Run `npm install` in the main folder to install all the dev-dependencies including webpack.
+
+After that is installed you can `run npx webpack --mode=development --watch` to run the development server in watch mode. This will refresh after each change you make.
+
+Alternatively you can run `npx webpack --mode=production` to build for production
+
+#### Credits:
+🙌  A lot of the code for checking colour contrast came from [the brilliant repo](https://github.com/LeaVerou/contrast-ratio) for [contrast-ratio.com](https://contrast-ratio.com/).
+👊 [Tanya Hirst](https://twitter.com/tanyathehuman) made the dope illustration of a zebra. You can check out [her dribbble here](https://dribbble.com/TanyaTheHuman).
+😍 The Figma team and their brilliant tool and [their brilliant docs](https://www.figma.com/plugin-docs/intro/) . A lot of the explanations were stolen from their docs site.
+❤️ Everyone on the Figma plugin slack . Searching through past issues helped a lot.
+
+
