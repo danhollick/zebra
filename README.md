@@ -36,9 +36,9 @@ After that is installed you can `run npx webpack --mode=development --watch` to 
 Alternatively you can run `npx webpack --mode=production` to build for production
 
 #### Credits:
-🙌  A lot of the code for checking colour contrast came from [the brilliant repo](https://github.com/LeaVerou/contrast-ratio) for [contrast-ratio.com](https://contrast-ratio.com/).
-👊 [Tanya Hirst](https://twitter.com/tanyathehuman) made the dope illustration of a zebra. You can check out [her dribbble here](https://dribbble.com/TanyaTheHuman).
-😍 The Figma team and their brilliant tool and [their brilliant docs](https://www.figma.com/plugin-docs/intro/) . A lot of the explanations were stolen from their docs site.
-❤️ Everyone on the Figma plugin slack . Searching through past issues helped a lot.
+- 🙌  A lot of the code for checking colour contrast came from [the brilliant repo](https://github.com/LeaVerou/contrast-ratio) for [contrast-ratio.com](https://contrast-ratio.com/).
+- 👊 [Tanya Hirst](https://twitter.com/tanyathehuman) made the dope illustration of a zebra. You can check out [her dribbble here](https://dribbble.com/TanyaTheHuman).
+- 😍 The Figma team and their brilliant tool and [their brilliant docs](https://www.figma.com/plugin-docs/intro/) . A lot of the explanations were stolen from their docs site.
+- ❤️ Everyone on the Figma plugin slack . Searching through past issues helped a lot.
 
 
