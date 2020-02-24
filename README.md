@@ -1,7 +1,7 @@
 ### Zebra is a fast, lightweight colour contrast checker plugin for Figma.
 ![image](https://cdn-images-1.medium.com/max/800/1*DXkmk6IFQR0tKzCeKXTnJw.gif)
 
-This repo is split up into steps that track with a tutorial. Which can be found [here](https://medium.com/@danhollick/figma-plugin-tutorial-1-6-65fc2102506).
+This repo is split up into steps that track with a tutorial. Which can be found [here](https://medium.com/@danhollick/figma-plugin-tutorial-1-6-65fc2102506) or [here](https://alcohollick.com/writing/figma-plugin-tutorial-1-6/).
 
 The plugin can be found [here](https://www.figma.com/c/plugin/806578669827234193/zebra)
 
