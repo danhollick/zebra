@@ -6,7 +6,7 @@ This repo is split up into steps that track with a tutorial. Which can be found 
 The plugin can be found [here](https://www.figma.com/c/plugin/806578669827234193/zebra)
 
 ### Local Development:
-It should be pretty straight forward to run the plugin code from any of the steps in Figma as there are no dependencies, only dev dependencies for webpack and linting. 
+It should be pretty straight forward to run the plugin code from any of the steps in Figma as there are no dependencies, only dev dependencies for webpack and linting.
 
 #### Step 1
 Download or clone the repo.
@@ -31,7 +31,7 @@ The code in the **final** folder is bundled with webpack so to change any code i
 
 Run `npm install` in the main folder to install all the dev-dependencies including webpack.
 
-After that is installed you can `run npx webpack --mode=development --watch` to run the development server in watch mode. This will refresh after each change you make.
+After that is installed you can run `npx webpack --mode=development --watch` to run the development server in watch mode. This will refresh after each change you make.
 
 Alternatively you can run `npx webpack --mode=production` to build for production
 
