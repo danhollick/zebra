@@ -24,6 +24,13 @@ function changeColor(classname, color) {
   }
 }
 
+function changeSVGFIll(classname, color) {
+  const fills = document.getElementsByClassName(classname)
+  for (let i = 0; i < fills.length; i++) {
+    fills[i].style = `fill: ${color};`
+  }
+}
+
 window.onmessage = async event => {
   const message = event.data.pluginMessage
   if (message.type === 'selectionChange') {
@@ -34,6 +41,8 @@ window.onmessage = async event => {
     changeText('bgValue', message.background)
     updateScores('normalTextScore', message.scores.normalText)
     updateScores('largeTextScore', message.scores.largeText)
+    changeSVGFIll('Stripe', message.foreground)
+    changeSVGFIll('Base', message.background)
   }
 }
 document.getElementById('swap').onclick = () => {

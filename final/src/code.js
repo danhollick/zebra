@@ -1,5 +1,5 @@
-let foregroundColor = [0, 0, 0] // black
-let backgoundColor = [255, 255, 255] // whites
+let foregroundColor = [52, 45, 53] // off black
+let backgoundColor = [251, 251, 251] // off white
 let foregroundAlpha = 1
 let backgroundAlpha = 1
 
