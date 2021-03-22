@@ -2,7 +2,7 @@ figma.showUI(__html__)
 
 let foregroundColor
 let foregroundAlpha
-let backgoundColor
+let backgroundColor
 
 function convertRgbToHex(color) {
   const hex = color
@@ -38,7 +38,7 @@ function overlay(foreground, alpha, backgound) {
     return foreground
   }
   const overlaid = foreground.map((channel, i) =>
-    Math.round(channel * alpha + backgound[i] * (1 - alpha))
+    Math.round(channel * alpha + background[i] * (1 - alpha))
   )
   return overlaid
 }
@@ -72,7 +72,7 @@ function calculateContrast(foreground, alpha, backgound) {
     foreground = overlay(foreground, alpha, backgound)
   }
   const foregroundLuminance = calculateLuminance(foreground) + 0.05
-  const backgroundLuminance = calculateLuminance(backgound) + 0.05
+  const backgroundLuminance = calculateLuminance(background) + 0.05
   let contrast = foregroundLuminance / backgroundLuminance
   if (backgroundLuminance > foregroundLuminance) {
     contrast = 1 / contrast
@@ -82,11 +82,11 @@ function calculateContrast(foreground, alpha, backgound) {
   return contrast
 }
 
-function sendContrastInfo(contrast, foreground, backgound) {
+function sendContrastInfo(contrast, foreground, background) {
   figma.ui.postMessage({
     type: 'selectionChange',
     foreground: convertRgbToHex(foreground),
-    background: convertRgbToHex(backgound),
+    background: convertRgbToHex(background),
     contrast,
     scores: getContrastScores(contrast),
   })
@@ -104,9 +104,9 @@ figma.on('selectionchange', () => {
     const contrast = calculateContrast(
       foregroundColor,
       foregroundAlpha,
-      backgoundColor
+      backgroundColor
     )
-    sendContrastInfo(contrast, foregroundColor, backgoundColor)
+    sendContrastInfo(contrast, foregroundColor, backgroundColor)
   } else {
     console.log('Select at least 2 layers')
   }
