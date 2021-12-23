@@ -34,13 +34,13 @@ module.exports = (env, argv) => ({
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'final/dist'), // Compile into a folder called "dist"
+    path: path.resolve(__dirname, 'dist'), // Compile into a folder called "dist"
   },
 
   // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
   plugins: [
     new HtmlWebpackPlugin({
-      template: './final/src/ui.html',
+      template: './src/ui.html',
       filename: 'ui.html',
       inlineSource: '.(js)$',
       chunks: ['ui'],
