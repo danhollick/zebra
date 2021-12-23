@@ -14,32 +14,18 @@ export const {
   theme: {
     colors: {
       white: '#ffffff',
-      gray0: '#f9f9fb',
-      gray50: '#f2f2f5',
-      gray100: '#eff0f3',
-      gray200: '#e7e8eb',
-      gray300: '#dadbde',
-      gray400: '#c8c8cc',
-      gray500: '#afafb2',
-      gray600: '#8e8e91',
-      gray700: '#656568',
-      gray800: '#363638',
-      gray900: '#050505',
+      gray50: '#fafafa',
+      gray100: '#f4f4f5',
+      gray200: '#e4e4e7',
+      gray300: '#d4d4d8',
+      gray400: '#a1a1aa',
+      gray500: '#71717a',
+      gray600: '#52525b',
+      gray700: '#3f3f46',
+      gray800: '#27272a',
+      gray900: '#18181b',
       black: '#000000',
-      // blue
-      blue0: '#f3f4fc',
-      blue50: '#dee1fc',
-      blue100: '#c9cffc',
-      blue200: '#a1aafc',
-      blue300: '#7e8afc',
-      blue400: '#6070fc',
-      blue500: '#485afa',
-      blue600: '#364af8',
-      blue700: '#283df3',
-      blue800: '#1e32e9',
-      blue900: '#162ad8',
-      blue1000: '#1123bf',
-      blue1100: '#0415A6',
+
       // red
       red0: '#fcf3f3',
       red50: '#fcdede',
@@ -65,8 +51,6 @@ export const {
       green800: '#18BE6B',
       green900: '#12AC5F',
       green1000: '#0E9953',
-
-      yellow700: '#FFA800',
     },
     space: {
       0: '4px',
@@ -117,12 +101,12 @@ export const {
     },
     radii: {
       0: '2px',
-      1: '4px',
-      2: '8px',
-      3: '16px',
-      4: '24px',
-      5: '32px',
-      6: '40px',
+      1: '1px',
+      2: '2px',
+      3: '4px',
+      4: '8px',
+      5: '16px',
+      6: '32px',
       round: '50%',
       pill: '9999px',
     },
@@ -137,68 +121,68 @@ export const {
     bp1: '(min-width: 480px)',
   },
   utils: {
-    p: (value) => ({
+    p: value => ({
       padding: value,
     }),
-    pt: (value) => ({
+    pt: value => ({
       paddingTop: value,
     }),
-    pr: (value) => ({
+    pr: value => ({
       paddingRight: value,
     }),
-    pb: (value) => ({
+    pb: value => ({
       paddingBottom: value,
     }),
-    pl: (value) => ({
+    pl: value => ({
       paddingLeft: value,
     }),
-    px: (value) => ({
+    px: value => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (value) => ({
+    py: value => ({
       paddingTop: value,
       paddingBottom: value,
     }),
-    m: (value) => ({
+    m: value => ({
       margin: value,
     }),
-    mt: (value) => ({
+    mt: value => ({
       marginTop: value,
     }),
-    mr: (value) => ({
+    mr: value => ({
       marginRight: value,
     }),
-    mb: (value) => ({
+    mb: value => ({
       marginBottom: value,
     }),
-    ml: (value) => ({
+    ml: value => ({
       marginLeft: value,
     }),
-    mx: (value) => ({
+    mx: value => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value) => ({
+    my: value => ({
       marginTop: value,
       marginBottom: value,
     }),
 
     // A property for applying width/height together
-    size: (value) => ({
+    size: value => ({
       width: value,
       height: value,
     }),
 
     // Shorthand for specifying rows and columns
-    rows: (value) => ({
+    rows: value => ({
       gridTemplateRows: value,
     }),
-    cols: (value) => ({
+    cols: value => ({
       gridTemplateColumns: value,
     }),
     // I never remember border radius
-    corners: (value) => ({
+    corners: value => ({
       borderRadius: value,
     }),
   },
