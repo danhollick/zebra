@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
   devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
   entry: {
-    ui: './src/ui.jsx', // The entry point for your UI code
+    ui: './src/ui.js', // The entry point for your UI code
     code: './src/code.js', // The entry point for your plugin code
   },
 

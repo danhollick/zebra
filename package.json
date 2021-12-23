@@ -5,14 +5,19 @@
   "main": "code.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx webpack --mode=development --watch",
-    "prod": "npx webpack --mode=production"
+    "build": "npm run build:ui && npm run build:main",
+    "build:production": "npm run build:ui && npm run build:main -- --minify",
+    "build:main": "esbuild plugin-src/code.js --bundle --outfile=dist/code.js",
+    "build:ui": "npx vite build --minify esbuild --emptyOutDir=false",
+    "build:watch": "concurrently -n widget,iframe \"npm run build:main -- --watch\" \"npm run build:ui -- --watch\"",
+    "dev": "concurrently -n tsc,build,vite 'npm:tsc:watch' 'npm:build:watch' 'npx vite'"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "babel-eslint": "^10.0.1",
     "css-loader": "^6.2.0",
+    "esbuild": "^0.13.5",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -28,7 +33,11 @@
     "typescript": "^4.3.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.8.0",
+    "vite": "^2.5.2",
+    "vite-plugin-singlefile": "^0.5.1",
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "concurrently": "^6.3.0"
   },
   "author": "me",
   "license": "ISC",

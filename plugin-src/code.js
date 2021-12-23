@@ -134,5 +134,5 @@ figma.ui.onmessage = msg => {
   }
 }
 // call on plugin start
-figma.showUI(__html__, { width: 340, height: 405 })
+figma.showUI(__html__, { width: 480, height: 195 })
 calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)
