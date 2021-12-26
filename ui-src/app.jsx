@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Box } from './components/box'
-import { Input, InputWithColor } from './components/input'
+
 import MainPanel from './components/mainPanel'
 import { globalCss } from '../stitches.config'
 
@@ -31,13 +31,6 @@ function App() {
   return (
     <Box className="App">
       <MainPanel />
-      {/* <button
-        onClick={() => {
-          parent?.postMessage?.({ pluginMessage: 'close' }, '*')
-        }}
-      >
-        Close
-      </button> */}
     </Box>
   )
 }

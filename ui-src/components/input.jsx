@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from '@stitches/react'
 import { Box } from './box'
+import { useStore } from '../store'
 
 const StyledInput = styled('input', {
   all: 'unset',
@@ -32,7 +33,11 @@ const ColorDot = styled('div', {
   border: '1px solid $gray900',
 })
 
-export const InputWithColor = ({ alignment = 'right', value }) => (
+export const InputWithColor = ({
+  position = 'foreground',
+  value,
+  onChange,
+}) => (
   <Box
     alignItems="center"
     direction="horizontal"
@@ -46,14 +51,14 @@ export const InputWithColor = ({ alignment = 'right', value }) => (
       borderRadius: '$1',
     }}
   >
-    {alignment === 'left' && (
+    {position === 'foreground' && (
       <ColorDot css={{ backgroundColor: `#${value}` }} />
     )}
     <Box justifySelf="center" gap="none" direction="horizontal">
       <p>#</p>
-      <Input value={value} />
+      <Input value={value} onChange={onChange} />
     </Box>
-    {alignment === 'right' && (
+    {position === 'background' && (
       <ColorDot css={{ backgroundColor: `#${value}` }} />
     )}
   </Box>

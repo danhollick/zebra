@@ -1,3 +1,5 @@
+import { getApcaContrast } from './getApcaContrast'
+
 let foregroundColor = [52, 45, 53] // off black
 let backgoundColor = [255, 255, 255] // white
 let foregroundAlpha = 1
@@ -131,6 +133,19 @@ figma.ui.onmessage = msg => {
       foregroundAlpha,
     ]
     calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)
+  }
+
+  if (msg.type === 'getApcaContrast') {
+    console.log(msg)
+    const apcaContrast = getApcaContrast({
+      foregroundColor: msg.foregroundColor,
+      backgroundColor: msg.backgroundColor,
+    })
+    console.log(apcaContrast)
+    figma.ui.postMessage({
+      type: 'apcaContrastCalculated',
+      contrast: apcaContrast,
+    })
   }
 }
 // call on plugin start
