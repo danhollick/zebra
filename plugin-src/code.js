@@ -108,6 +108,7 @@ function findFills(nodes) {
 
 figma.on('selectionchange', () => {
   const fills = findFills(figma.currentPage.selection)
+  console.log('selection', figma.currentPage.selection)
   if (fills.length > 1) {
     foregroundColor = getRGB(fills[0].color)
     foregroundAlpha = fills[0].opacity
@@ -147,7 +148,19 @@ figma.ui.onmessage = msg => {
       contrast: apcaContrast,
     })
   }
+
+  if (msg.type === 'toggleExpand') {
+    console.log(msg)
+    if (msg.expanded === true) {
+      figma.ui.resize(480, 624)
+    } else {
+      figma.ui.resize(480, 195)
+    }
+  }
 }
+
+// const styles = figma.getLocalPaintStyles()
+// console.log('styles', styles)
 // call on plugin start
 figma.showUI(__html__, { width: 480, height: 195 })
-calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)
+// calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)

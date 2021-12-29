@@ -1,3 +1,9 @@
+import {
+  CaretSortIcon,
+  CircleIcon,
+  Half2Icon,
+  UpdateIcon,
+} from '@radix-ui/react-icons'
 import React, { useEffect } from 'react'
 import { styled } from '../../stitches.config'
 import { useStore } from '../store'
@@ -41,7 +47,10 @@ function MainPanel() {
   const backgroundColor = useStore(state => state.backgroundColor)
   const foregroundColor = useStore(state => state.foregroundColor)
   const contrast = useStore(state => state.contrast)
+  const sentiment = useStore(state => state.sentiment)
   const setContrast = useStore(state => state.setContrast)
+  const swapColors = useStore(state => state.swapColors)
+  const toggleExpand = useStore(state => state.toggleExpand)
   const changeBackground = useStore(state => state.changeBackground)
   const changeForeground = useStore(state => state.changeForeground)
 
@@ -63,6 +72,7 @@ function MainPanel() {
   }, [backgroundColor, foregroundColor])
 
   useEffect(() => {
+    // console.log(window)
     window.onmessage = evt => {
       const message = evt.data?.pluginMessage
       if (message.type === 'apcaContrastCalculated') {
@@ -72,32 +82,61 @@ function MainPanel() {
   }, [])
 
   return (
-    <Box justifyContent="center" css={{ p: '$2' }}>
+    <Box
+      justifyContent="center"
+      css={{
+        p: '$2',
+        border: '1px solid $gray900',
+        position: 'relative',
+        height: '192px',
+      }}
+    >
       <Box
-        css={{ gridTemplateColumns: '1fr auto 1fr' }}
+        css={{ gridTemplateColumns: '1fr auto 1fr', paddingTop: '$1' }}
         direction="horizontal"
         justifySelf="center"
         alignItems="center"
       >
-        <InputWithColor
-          position="background"
-          value={backgroundColor}
-          onChange={changeBackground}
-        />
+        <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
+          <CircleIcon />
+          <InputWithColor
+            position="background"
+            value={backgroundColor}
+            onChange={changeBackground}
+          />
+        </Box>
         <Preview
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
         />
-        <InputWithColor
-          position="foreground"
-          value={foregroundColor}
-          onChange={changeForeground}
-        />
+        <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
+          <Half2Icon />
+          <InputWithColor
+            position="foreground"
+            value={foregroundColor}
+            onChange={changeForeground}
+          />
+        </Box>
       </Box>
-      <Box justifySelf="center">
-        <Text size="8" weight="bold">
-          {contrast}
+      <Box justifySelf="center" gap="none" justifyItems="center">
+        <Text css={{ lineHeight: '100%' }} size="8" weight="bold">
+          {Math.round(contrast)}
         </Text>
+        {/* <Text size="2" light>
+          {sentiment}
+        </Text> */}
+      </Box>
+      <Box
+        onClick={toggleExpand}
+        css={{ position: 'absolute', right: '16px', bottom: '16px' }}
+      >
+        <CaretSortIcon />
+      </Box>
+      <Box
+        onClick={swapColors}
+        css={{ position: 'absolute', left: '16px', bottom: '16px' }}
+      >
+        <UpdateIcon />
       </Box>
     </Box>
   )

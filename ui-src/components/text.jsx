@@ -38,6 +38,8 @@ export const Text = styled('span', {
       },
     },
     weight: {
+      'x-light': { fontWeight: 200 },
+      light: { fontWeight: 300 },
       medium: { fontWeight: 500 },
       'semi-bold': { fontWeight: 600 },
       bold: { fontWeight: 700 },
@@ -47,6 +49,16 @@ export const Text = styled('span', {
       single: { lineHeight: '100%' },
       normal: { lineHeight: 'normal' },
       paragraph: { lineHeight: '140%' },
+    },
+    faint: {
+      true: {
+        color: '$gray400',
+      },
+    },
+    xlight: {
+      true: {
+        color: '$gray500',
+      },
     },
     light: {
       true: {
