@@ -9,8 +9,9 @@ import { useStore } from '../store'
 const StyledInput = styled('input', {
   all: 'unset',
   fontSize: '$3',
-  width: '6ch',
+  width: '7ch',
   textTransform: 'uppercase',
+  textAlign: 'center',
 })
 
 export const Input = ({
@@ -29,24 +30,14 @@ export const Input = ({
   />
 )
 
-const ColorDot = styled('div', {
+export const ColorDot = styled('div', {
   height: '20px',
   width: '20px',
   borderRadius: '100%',
   border: '1px solid $gray900',
 })
 
-const ColorDotWithPopover = ({ color }) => (
-  <Popover>
-    <PopoverTrigger asChild>
-      <ColorDot css={{ backgroundColor: `#${color}` }} />
-    </PopoverTrigger>
-    <PopoverContent>Hello</PopoverContent>
-  </Popover>
-)
-
-const ColorDotWithPicker = ({ color, onChange }) => {
-  // const changeBGFromPicker = useStore(state => state.changeBackgroundFromPicker)
+const ColorDotWithPicker = ({ color, onChange, position }) => {
   const toggleExpand = useStore(state => state.toggleExpand)
   const expanded = useStore(state => state.expanded)
 
@@ -62,6 +53,10 @@ const ColorDotWithPicker = ({ color, onChange }) => {
         <ColorDot css={{ backgroundColor: `#${color}` }} />
       </PopoverTrigger>
       <PopoverContent
+        sideOffset={6}
+        avoidCollisions={false}
+        align={position === 'foreground' ? 'start' : 'end'}
+        alignOffset={-30}
         css={{
           '.react-colorful': {
             width: '160px',
@@ -108,16 +103,23 @@ export const InputWithColor = ({
         borderRadius: '$1',
       }}
     >
-      {/* {position === 'foreground' && <ColorDotWithPopover color={value} />} */}
       {position === 'foreground' && (
-        <ColorDotWithPicker color={value} onChange={changeFGFromPicker} />
+        <ColorDotWithPicker
+          color={value}
+          onChange={changeFGFromPicker}
+          position={position}
+        />
       )}
       <Box justifySelf="center" gap="none" direction="horizontal">
         <Input value={value} onChange={onChange} />
       </Box>
-      {/* {position === 'background' && <ColorDotWithPopover color={value} />} */}
+
       {position === 'background' && (
-        <ColorDotWithPicker color={value} onChange={changeBGFromPicker} />
+        <ColorDotWithPicker
+          color={value}
+          onChange={changeBGFromPicker}
+          position={position}
+        />
       )}
     </Box>
   )

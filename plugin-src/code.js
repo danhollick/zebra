@@ -1,9 +1,12 @@
+import chroma from 'chroma-js'
 import { getApcaContrast } from './getApcaContrast'
 
 let foregroundColor = [52, 45, 53] // off black
 let backgoundColor = [255, 255, 255] // white
 let foregroundAlpha = 1
 let backgroundAlpha = 1
+
+let selectionMode = 'none'
 
 function convertRgbToHex(color) {
   const hex = color
@@ -107,21 +110,19 @@ function findFills(nodes) {
 }
 
 figma.on('selectionchange', () => {
-  const fills = findFills(figma.currentPage.selection)
-  console.log('selection', figma.currentPage.selection)
-  if (fills.length > 1) {
-    foregroundColor = getRGB(fills[0].color)
-    foregroundAlpha = fills[0].opacity
-    backgoundColor = getRGB(fills[1].color)
-    backgroundAlpha = fills[1].opacity
-    calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)
-  }
-
-  if (fills.length === 1) {
+  if (selectionMode !== 'none') {
     const fills = findFills(figma.currentPage.selection)
-    foregroundColor = getRGB(fills[0].color)
-    foregroundAlpha = fills[0].opacity
-    calculateAndSendContrast(foregroundColor, foregroundAlpha, backgoundColor)
+    console.log('selectionchange')
+    if (fills[0] && fills[0].color) {
+      const { r, g, b } = fills[0].color
+      const selectionColor = chroma(r, g, b, 'gl')
+      console.log('fills', fills, selectionColor.hex())
+
+      figma.ui.postMessage({
+        type: 'selectionChange',
+        selectionColor: selectionColor.hex(),
+      })
+    }
   }
 })
 
@@ -142,6 +143,7 @@ figma.ui.onmessage = msg => {
       foregroundColor: msg.foregroundColor,
       backgroundColor: msg.backgroundColor,
     })
+
     console.log(apcaContrast)
     figma.ui.postMessage({
       type: 'apcaContrastCalculated',
@@ -156,6 +158,11 @@ figma.ui.onmessage = msg => {
     } else {
       figma.ui.resize(480, 195)
     }
+  }
+
+  if (msg.type === 'selectionModeChange') {
+    console.log(msg)
+    selectionMode = msg.selectionMode
   }
 }
 

@@ -52,6 +52,7 @@
     "@stitches/react": "^1.2.6",
     "apca-w3": "^0.0.98-g-4g.4b",
     "babel-loader": "^8.2.3",
+    "chroma-js": "^2.1.2",
     "react": "^17.0.2",
     "react-colorful": "^5.5.1",
     "react-dev-utils": "^11.0.4",

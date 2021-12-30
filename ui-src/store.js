@@ -1,9 +1,11 @@
 import create from 'zustand'
 
-export const useStore = create(set => ({
+export const useStore = create((set, get) => ({
+  selectionMode: 'none',
   foregroundColor: 'ea7439',
   backgroundColor: 'ffffff',
   contrast: '56',
+  wcag: '2.9',
   sentiment: 'Weak',
   expanded: false,
   swapColors: () => {
@@ -12,8 +14,8 @@ export const useStore = create(set => ({
       backgroundColor: state.foregroundColor,
     }))
   },
-  setContrast: ({ score, sentiment }) => {
-    set({ contrast: score, sentiment })
+  setContrast: ({ score, sentiment, wcag }) => {
+    set({ contrast: score, sentiment, wcag })
   },
   changeForeground: evt => {
     let { value } = evt.target
@@ -34,6 +36,23 @@ export const useStore = create(set => ({
   },
   changeForegroundFromPicker: value => {
     set({ foregroundColor: value.slice(1) })
+  },
+  setSelectionColor: value => {
+    const { selectionMode } = get()
+    if (selectionMode === 'foreground') {
+      set({ foregroundColor: value.slice(1) })
+    } else if (selectionMode === 'background') {
+      set({ backgroundColor: value.slice(1) })
+    }
+  },
+  setSelectionMode: mode => {
+    const { selectionMode } = get()
+
+    if (selectionMode === mode) {
+      set({ selectionMode: 'none' })
+    } else {
+      set({ selectionMode: mode })
+    }
   },
   toggleExpand: () => {
     set(state => ({ expanded: !state.expanded }))

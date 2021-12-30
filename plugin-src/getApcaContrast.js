@@ -1,4 +1,5 @@
 import { APCAcontrast, sRGBtoY, displayP3toY, colorParsley } from 'apca-w3'
+import chroma from 'chroma-js'
 
 export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
   //   console.log(colorParsley(foregroundColor), backgroundColor)
@@ -11,6 +12,8 @@ export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
     sRGBtoY(backgroundRGBArray),
     1
   )
+  const wcag = chroma.contrast(`#${foregroundColor}`, `#${backgroundColor}`)
+
   contrastLc = Math.abs(contrastLc)
   switch (true) {
     case contrastLc > 90:
@@ -38,5 +41,9 @@ export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
       break
   }
   // console.log(foregroundRGBArray, backgroundRGBArray, contrastLc)
-  return { score: contrastLc, sentiment }
+  return {
+    score: Math.round(contrastLc),
+    sentiment,
+    wcag: Math.round((wcag + Number.EPSILON) * 10) / 10,
+  }
 }

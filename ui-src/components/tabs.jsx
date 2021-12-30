@@ -1,6 +1,8 @@
 import {
   BarChartIcon,
   ColumnSpacingIcon,
+  FontStyleIcon,
+  InfoCircledIcon,
   LetterCaseCapitalizeIcon,
 } from '@radix-ui/react-icons'
 import React from 'react'
@@ -8,12 +10,13 @@ import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '../../stitches.config'
 import { Box } from './box'
 import Scale from './scale'
+import Comparison from './comparison'
 
 const tabs = [
   {
-    name: 'Font Scale',
-    icon: <BarChartIcon />,
-    slug: 'scale',
+    name: 'Chart',
+    icon: <InfoCircledIcon />,
+    slug: 'chart',
   },
   {
     name: 'Comparison',
@@ -21,9 +24,9 @@ const tabs = [
     slug: 'comparison',
   },
   {
-    name: 'Chart',
-    icon: <LetterCaseCapitalizeIcon />,
-    slug: 'chart',
+    name: 'Font Scale',
+    icon: <FontStyleIcon />,
+    slug: 'scale',
   },
 ]
 
@@ -72,7 +75,7 @@ function Tabs(props) {
           <Scale />
         </StyledTabContent>
         <StyledTabContent tabindex="-1" value="comparison">
-          Comparison
+          <Comparison />
         </StyledTabContent>
         <StyledTabContent tabindex="-1" value="chart">
           Chart

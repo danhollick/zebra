@@ -1,6 +1,7 @@
 import {
   CaretSortIcon,
   CircleIcon,
+  CursorArrowIcon,
   Half2Icon,
   UpdateIcon,
 } from '@radix-ui/react-icons'
@@ -53,11 +54,12 @@ function MainPanel() {
   const toggleExpand = useStore(state => state.toggleExpand)
   const changeBackground = useStore(state => state.changeBackground)
   const changeForeground = useStore(state => state.changeForeground)
+  const setSelectionColor = useStore(state => state.setSelectionColor)
+  const setSelectionMode = useStore(state => state.setSelectionMode)
+  const selectionMode = useStore(state => state.selectionMode)
 
   useEffect(() => {
     if (typeof parent !== undefined) {
-      console.log('called ')
-
       parent?.postMessage?.(
         {
           pluginMessage: {
@@ -72,11 +74,27 @@ function MainPanel() {
   }, [backgroundColor, foregroundColor])
 
   useEffect(() => {
-    // console.log(window)
+    if (typeof parent !== undefined) {
+      parent?.postMessage?.(
+        {
+          pluginMessage: {
+            type: 'selectionModeChange',
+            selectionMode,
+          },
+        },
+        '*'
+      )
+    }
+  }, [selectionMode])
+
+  useEffect(() => {
     window.onmessage = evt => {
       const message = evt.data?.pluginMessage
       if (message.type === 'apcaContrastCalculated') {
         setContrast(message.contrast)
+      }
+      if (message.type === 'selectionChange') {
+        setSelectionColor(message.selectionColor)
       }
     }
   }, [])
@@ -98,7 +116,13 @@ function MainPanel() {
         alignItems="center"
       >
         <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
-          <CircleIcon />
+          <Box onClick={() => setSelectionMode('background')}>
+            {selectionMode === 'background' ? (
+              <CursorArrowIcon />
+            ) : (
+              <CircleIcon />
+            )}
+          </Box>
           <InputWithColor
             position="background"
             value={backgroundColor}
@@ -110,7 +134,13 @@ function MainPanel() {
           backgroundColor={backgroundColor}
         />
         <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
-          <Half2Icon />
+          <Box onClick={() => setSelectionMode('foreground')}>
+            {selectionMode === 'foreground' ? (
+              <CursorArrowIcon />
+            ) : (
+              <Half2Icon />
+            )}
+          </Box>
           <InputWithColor
             position="foreground"
             value={foregroundColor}
@@ -120,7 +150,7 @@ function MainPanel() {
       </Box>
       <Box justifySelf="center" gap="none" justifyItems="center">
         <Text css={{ lineHeight: '100%' }} size="8" weight="bold">
-          {Math.round(contrast)}
+          {contrast}
         </Text>
         {/* <Text size="2" light>
           {sentiment}
