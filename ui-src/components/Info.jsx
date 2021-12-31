@@ -3,7 +3,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { BarTabs, BarTabItem } from './BarTabGroup'
 import { Box } from './Box'
 import { Text } from './Text'
-import { useStore } from '../store'
+import { useStore } from '../lib/store'
 import { TooltipWrapper } from './Tooltip'
 import { apcaInfo } from '../data/apcaInfo'
 
@@ -12,10 +12,12 @@ function Info() {
   const defaultTab = apcaInfo.filter(
     item => item.rangeMin <= contrast && contrast < item.rangeMax
   )
-  console.log(defaultTab[0].rangeMin)
+  // console.log(defaultTab[0].rangeMin, contrast)
   return (
     <Box justifyContent="center" css={{ px: '$2', py: '$4' }}>
-      <TabsPrimitive.Root defaultValue={defaultTab[0].rangeMin}>
+      <TabsPrimitive.Root
+        defaultValue={defaultTab[0]?.rangeMin || apcaInfo[0].rangeMin}
+      >
         <BarTabs>
           {apcaInfo.map(({ rangeMin, rangeMax, color }, i) => (
             <TooltipWrapper key={i} content={`${rangeMin} - ${rangeMax}`}>

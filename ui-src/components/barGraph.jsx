@@ -30,7 +30,7 @@ export const BarGraph = ({ weight, contrast }) => {
     fontRangeLowerLimit: 14,
     fontRangeUpperLimit: 96,
   })
-  console.log(bars)
+  console.log('bars', bars)
   return (
     <Container>
       {bars.map(({ isVisible, min, max, color, width, type }, i) => (

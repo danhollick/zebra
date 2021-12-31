@@ -6,7 +6,7 @@ import {
   UpdateIcon,
 } from '@radix-ui/react-icons'
 import React, { useEffect } from 'react'
-import { useStore } from '../store'
+import { useStore } from '../lib/store'
 import { Box } from './Box'
 import { ContrastPreview } from './ContrastPreview'
 import { InputWithColor } from './Input'

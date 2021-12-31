@@ -2,6 +2,18 @@ import { APCAcontrast, sRGBtoY, displayP3toY, colorParsley } from 'apca-w3'
 import chroma from 'chroma-js'
 
 export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
+  // if the hex codes aren't valid return 0 contrast
+  if (
+    !chroma.valid(`#${foregroundColor}`) ||
+    !chroma.valid(`#${backgroundColor}`)
+  ) {
+    console.log('invalid hex codes')
+    return {
+      score: 0,
+      sentiment: 'Extremely Low',
+      wcag: 0,
+    }
+  }
   // TODO: work out what color space the Figma client is using
   const foregroundRGBArray = colorParsley(foregroundColor)
   const backgroundRGBArray = colorParsley(backgroundColor)
@@ -12,6 +24,7 @@ export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
     sRGBtoY(backgroundRGBArray),
     1
   )
+
   const wcag = chroma.contrast(`#${foregroundColor}`, `#${backgroundColor}`)
 
   contrastLc = Math.abs(contrastLc)

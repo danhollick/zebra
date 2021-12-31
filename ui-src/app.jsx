@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Box } from './components/Box'
 import MainPanel from './components/MainPanel'
 import { globalCss } from '../stitches.config'
-import { useStore } from './store'
+import { useStore } from './lib/store'
 import Tabs from './components/Tabs'
 import { Provider } from './components/Tooltip'
 

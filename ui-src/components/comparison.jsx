@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore } from '../store'
+import { useStore } from '../lib/store'
 import { Box } from './Box'
 import { comparision } from '../data/comparision'
 import { ColorDot } from './Input'

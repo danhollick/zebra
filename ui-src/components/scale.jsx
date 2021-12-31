@@ -7,7 +7,7 @@ import {
 } from '@radix-ui/react-icons'
 import { Box } from './Box'
 import { Text } from './Text'
-import { useStore } from '../store'
+import { useStore } from '../lib/store'
 import { TooltipWrapper } from './Tooltip'
 import { BarGraph } from './BarGraph'
 import { fontWeights } from '../data/fontWeights'
