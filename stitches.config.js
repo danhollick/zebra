@@ -59,7 +59,19 @@ export const {
       yellow700: '#a16207',
       yellow800: '#854d0e',
       yellow900: '#713f12',
+
+      // contrast styles
+      contrast0: '#F4F4F5',
+      contrast15: '#D8D8D8',
+      contrast30: '#BBBBBB',
+      contrast45: '#A0A0A0',
+      contrast60: '#808080',
+      contrast75: '#5F5F5F',
+      contrast90: '#3A3A3A',
+      contrast100: '#060606',
+      contrast106: '#000000',
     },
+
     space: {
       0: '4px',
       1: '8px',

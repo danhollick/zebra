@@ -6,49 +6,18 @@ import {
   UpdateIcon,
 } from '@radix-ui/react-icons'
 import React, { useEffect } from 'react'
-import { styled } from '../../stitches.config'
 import { useStore } from '../store'
-import { Box } from './box'
-import { InputWithColor } from './input'
-import { Text } from './text'
-
-const OuterColor = styled('div', {
-  height: '80px',
-  width: '80px',
-  borderRadius: '100%',
-  border: '1px solid $gray900',
-  display: 'grid',
-  alignItems: 'center',
-  justifyItems: 'end',
-  paddingRight: '4px',
-})
-
-const InnerColor = ({ color }) => (
-  <svg
-    width="36"
-    height="72"
-    viewBox="0 0 36 72"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0 72C19.8823 72 36 55.8823 36 36C36 16.1177 19.8823 0 0 0V72Z"
-      fill={`#${color}`}
-    />
-  </svg>
-)
-
-const Preview = ({ foregroundColor, backgroundColor }) => (
-  <OuterColor css={{ backgroundColor: `#${backgroundColor}` }}>
-    <InnerColor color={foregroundColor} />
-  </OuterColor>
-)
+import { Box } from './Box'
+import { ContrastPreview } from './ContrastPreview'
+import { InputWithColor } from './Input'
+import { Text } from './Text'
+import { TooltipWrapper } from './Tooltip'
 
 function MainPanel() {
   const backgroundColor = useStore(state => state.backgroundColor)
   const foregroundColor = useStore(state => state.foregroundColor)
   const contrast = useStore(state => state.contrast)
-  const sentiment = useStore(state => state.sentiment)
+  // const sentiment = useStore(state => state.sentiment)
   const setContrast = useStore(state => state.setContrast)
   const swapColors = useStore(state => state.swapColors)
   const toggleExpand = useStore(state => state.toggleExpand)
@@ -118,9 +87,13 @@ function MainPanel() {
         <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
           <Box onClick={() => setSelectionMode('background')}>
             {selectionMode === 'background' ? (
-              <CursorArrowIcon />
+              <TooltipWrapper content="Toggle off background selection">
+                <CursorArrowIcon />
+              </TooltipWrapper>
             ) : (
-              <CircleIcon />
+              <TooltipWrapper content="Background">
+                <CircleIcon />
+              </TooltipWrapper>
             )}
           </Box>
           <InputWithColor
@@ -129,16 +102,20 @@ function MainPanel() {
             onChange={changeBackground}
           />
         </Box>
-        <Preview
+        <ContrastPreview
           foregroundColor={foregroundColor}
           backgroundColor={backgroundColor}
         />
         <Box justifyItems="center" gap="x-tight" css={{ marginBottom: '$2' }}>
           <Box onClick={() => setSelectionMode('foreground')}>
             {selectionMode === 'foreground' ? (
-              <CursorArrowIcon />
+              <TooltipWrapper content="Toggle off foreground selection">
+                <CursorArrowIcon />
+              </TooltipWrapper>
             ) : (
-              <Half2Icon />
+              <TooltipWrapper content="Foreground">
+                <Half2Icon />
+              </TooltipWrapper>
             )}
           </Box>
           <InputWithColor
@@ -160,13 +137,18 @@ function MainPanel() {
         onClick={toggleExpand}
         css={{ position: 'absolute', right: '16px', bottom: '16px' }}
       >
-        <CaretSortIcon />
+        <TooltipWrapper content="Expand UI">
+          <CaretSortIcon />
+        </TooltipWrapper>
       </Box>
+
       <Box
         onClick={swapColors}
         css={{ position: 'absolute', left: '16px', bottom: '16px' }}
       >
-        <UpdateIcon />
+        <TooltipWrapper content="Swap foreground and background">
+          <UpdateIcon />
+        </TooltipWrapper>
       </Box>
     </Box>
   )

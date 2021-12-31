@@ -2,7 +2,7 @@ import { APCAcontrast, sRGBtoY, displayP3toY, colorParsley } from 'apca-w3'
 import chroma from 'chroma-js'
 
 export const getApcaContrast = ({ foregroundColor, backgroundColor }) => {
-  //   console.log(colorParsley(foregroundColor), backgroundColor)
+  // TODO: work out what color space the Figma client is using
   const foregroundRGBArray = colorParsley(foregroundColor)
   const backgroundRGBArray = colorParsley(backgroundColor)
   let sentiment

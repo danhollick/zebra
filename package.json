@@ -48,6 +48,7 @@
     "@radix-ui/react-icons": "^1.0.3",
     "@radix-ui/react-popover": "^0.1.4",
     "@radix-ui/react-tabs": "^0.1.4",
+    "@radix-ui/react-toggle-group": "^0.1.4",
     "@radix-ui/react-tooltip": "^0.1.6",
     "@stitches/react": "^1.2.6",
     "apca-w3": "^0.0.98-g-4g.4b",

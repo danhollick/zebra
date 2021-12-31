@@ -23,8 +23,6 @@ const slideLeftAndFade = keyframes({
 })
 const StyledContent = styled(PopoverPrimitive.Content, {
   borderRadius: '0px',
-  //   padding: '$1',
-  //   width: 260,
   backgroundColor: '$gray50',
   border: '1px solid $gray900',
   boxShadow: '0px 4px 0px 0px rgba(0, 0, 0, 0.05)',
@@ -42,35 +40,9 @@ const StyledContent = styled(PopoverPrimitive.Content, {
   '&:focus': {
     backgroundColor: 'white',
     outline: 'none',
-    //   boxShadow: `hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px, 0 0 0 2px $gray900`,
   },
 })
 
-// const StyledArrow = styled(PopoverPrimitive.Arrow, {
-//   fill: 'white',
-// })
-
-// const StyledClose = styled(PopoverPrimitive.Close, {
-//   all: 'unset',
-//   fontFamily: 'inherit',
-//   borderRadius: '100%',
-//   height: 25,
-//   width: 25,
-//   display: 'inline-flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   color: '$gray900',
-//   position: 'absolute',
-//   top: 5,
-//   right: 5,
-
-//   '&:hover': { backgroundColor: '$gray50' },
-//   '&:focus': { boxShadow: `0 0 0 2px $gray900` },
-// })
-
-// Exports
 export const Popover = PopoverPrimitive.Root
 export const PopoverTrigger = PopoverPrimitive.Trigger
 export const PopoverContent = StyledContent
-// export const PopoverArrow = StyledArrow
-// export const PopoverClose = StyledClose

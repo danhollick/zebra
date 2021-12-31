@@ -5,11 +5,12 @@ import {
   ExclamationTriangleIcon,
   FontStyleIcon,
 } from '@radix-ui/react-icons'
-import { Box } from './box'
-import { Text } from './text'
+import { Box } from './Box'
+import { Text } from './Text'
 import { useStore } from '../store'
-import { Tooltip, TooltipTrigger, TooltipContent } from './tooltip'
-import { BarGraph } from './barGraph'
+import { TooltipWrapper } from './Tooltip'
+import { BarGraph } from './BarGraph'
+import { fontWeights } from '../data/fontWeights'
 
 const Key = ({
   icon = <CheckIcon />,
@@ -41,39 +42,6 @@ const Key = ({
   </Box>
 )
 
-const weights = [
-  {
-    weight: 200,
-    fontClass: 'x-light',
-    tooltip: 'Font Weight 200: Extra Light',
-  },
-  {
-    weight: 300,
-    fontClass: 'light',
-    tooltip: 'Font Weight 300: Light',
-  },
-  {
-    weight: 400,
-    fontClass: '',
-    tooltip: 'Font Weight 400: Regular',
-  },
-  {
-    weight: 500,
-    fontClass: 'medium',
-    tooltip: 'Font Weight 500: Medium',
-  },
-  {
-    weight: 600,
-    fontClass: 'semi-bold',
-    tooltip: 'Font Weight 600: Semi Bold',
-  },
-  {
-    weight: 700,
-    fontClass: 'bold',
-    tooltip: 'Font Weight 700: Bold',
-  },
-]
-
 function Scale() {
   const contrast = useStore(state => state.contrast)
   return (
@@ -92,14 +60,11 @@ function Scale() {
             </Text>
           </Box>
         </Box>
-        {weights.map(({ weight, fontClass, tooltip }, i) => (
+        {fontWeights.map(({ weight, fontClass, tooltip }, i) => (
           <Box alignItems="center" key={i} columns="auto-free" gap="loose">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Text weight={fontClass}>{weight}</Text>
-              </TooltipTrigger>
-              <TooltipContent>{tooltip}</TooltipContent>
-            </Tooltip>
+            <TooltipWrapper content={tooltip}>
+              <Text weight={fontClass}>{weight}</Text>
+            </TooltipWrapper>
             <BarGraph weight={weight} contrast={contrast} />
           </Box>
         ))}

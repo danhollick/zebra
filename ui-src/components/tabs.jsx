@@ -1,32 +1,35 @@
 import {
-  BarChartIcon,
   ColumnSpacingIcon,
   FontStyleIcon,
   InfoCircledIcon,
-  LetterCaseCapitalizeIcon,
 } from '@radix-ui/react-icons'
 import React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '../../stitches.config'
-import { Box } from './box'
-import Scale from './scale'
-import Comparison from './comparison'
+import { Box } from './Box'
+import Scale from './Scale'
+import Comparison from './Comparison'
+import Info from './Info'
+import { TooltipWrapper } from './Tooltip'
 
 const tabs = [
   {
-    name: 'Chart',
+    name: 'Info',
     icon: <InfoCircledIcon />,
-    slug: 'chart',
+    slug: 'info',
+    tooltip: 'APCA levels',
   },
   {
     name: 'Comparison',
     icon: <ColumnSpacingIcon />,
     slug: 'comparison',
+    tooltip: 'Compare APCA and WCAG 2',
   },
   {
     name: 'Font Scale',
     icon: <FontStyleIcon />,
     slug: 'scale',
+    tooltip: 'Min font sizes',
   },
 ]
 
@@ -42,11 +45,11 @@ const StyledTabTrigger = styled(TabsPrimitive.Trigger, {
   display: 'grid',
   backgroundColor: '$gray200',
   userSelect: 'none',
-  '&:first-child': { borderRight: '1px solid $gray900' },
-  '&:last-child': { borderLeft: '1px solid $gray900' },
+  // moved these styles to the Box below
+  // '&:first-child': { borderRight: '1px solid $gray900' },
+  // '&:last-child': { borderLeft: '1px solid $gray900' },
   '&[data-state="active"]': {
     backgroundColor: '$gray50',
-    // border: '1px inset $gray900',
   },
   '&:focus': { backgroundColor: 'white' },
 })
@@ -60,15 +63,25 @@ const StyledTabContent = styled(TabsPrimitive.TabsContent, {
   height: '379px',
 })
 
-function Tabs(props) {
+function Tabs() {
   return (
     <Box css={{ border: '1px solid $gray900', borderTop: 'none' }}>
-      <TabsPrimitive.Tabs defaultValue="scale">
+      <TabsPrimitive.Tabs defaultValue="info">
         <StyledTabList>
-          {tabs.map((tab, i) => (
-            <StyledTabTrigger key={i} tabIndex="0" value={tab.slug}>
-              {React.cloneElement(tab.icon)}
-            </StyledTabTrigger>
+          {tabs.map(({ icon, tooltip, slug }, i) => (
+            <TooltipWrapper key={i} content={tooltip}>
+              {/* need to put a wrapper between the tooltip wrapper and the tab trigger -> otherwise active state isn't triggered */}
+              <Box
+                css={{
+                  '&:first-child': { borderRight: '1px solid $gray900' },
+                  '&:last-child': { borderLeft: '1px solid $gray900' },
+                }}
+              >
+                <StyledTabTrigger tabIndex="0" value={slug}>
+                  {React.cloneElement(icon)}
+                </StyledTabTrigger>
+              </Box>
+            </TooltipWrapper>
           ))}
         </StyledTabList>
         <StyledTabContent tabindex="-1" value="scale">
@@ -77,8 +90,8 @@ function Tabs(props) {
         <StyledTabContent tabindex="-1" value="comparison">
           <Comparison />
         </StyledTabContent>
-        <StyledTabContent tabindex="-1" value="chart">
-          Chart
+        <StyledTabContent tabindex="-1" value="info">
+          <Info />
         </StyledTabContent>
       </TabsPrimitive.Tabs>
     </Box>

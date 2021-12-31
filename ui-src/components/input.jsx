@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { styled } from '@stitches/react'
 import { HexColorPicker } from 'react-colorful'
-import { Box } from './box'
-import { Text } from './text'
-import { Popover, PopoverContent, PopoverTrigger } from './popover'
+import { Box } from './Box'
+import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 import { useStore } from '../store'
 
 const StyledInput = styled('input', {

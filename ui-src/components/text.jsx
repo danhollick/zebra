@@ -5,7 +5,7 @@ export const Text = styled('span', {
   lineHeight: 'auto',
   margin: '0',
   fontWeight: 400,
-  //   fontVariantNumeric: 'tabular-nums',
+  whiteSpace: 'pre-line',
   display: 'block',
   variants: {
     size: {

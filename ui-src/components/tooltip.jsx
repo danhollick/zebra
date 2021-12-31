@@ -44,9 +44,12 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   },
 })
 
-const StyledArrow = styled(TooltipPrimitive.Arrow, {
-  fill: 'white',
-})
+export const TooltipWrapper = ({ children, content }) => (
+  <Tooltip>
+    <TooltipTrigger asChild>{children}</TooltipTrigger>
+    <TooltipContent sideOffset={5}>{content}</TooltipContent>
+  </Tooltip>
+)
 
 // Exports
 export const { Provider } = TooltipPrimitive
