@@ -12,7 +12,7 @@ function Info() {
   const defaultTab = apcaInfo.filter(
     item => item.rangeMin <= contrast && contrast < item.rangeMax
   )
-  // console.log(defaultTab[0].rangeMin, contrast)
+
   return (
     <Box justifyContent="center" css={{ px: '$2', py: '$4' }}>
       <TabsPrimitive.Root
@@ -20,10 +20,18 @@ function Info() {
       >
         <BarTabs>
           {apcaInfo.map(({ rangeMin, rangeMax, color }, i) => (
-            <TooltipWrapper key={i} content={`${rangeMin} - ${rangeMax}`}>
+            <TooltipWrapper
+              key={i}
+              content={`${rangeMin} - ${rangeMax}`}
+              tabindex="0"
+            >
               {/* need to put a wrapper between the tooltip wrapper and the tab trigger -> otherwise active state isn't triggered */}
-              <Box css={{ marginLeft: -1, '&:first-child': { marginLeft: 0 } }}>
+              <Box
+                css={{ marginLeft: -1, '&:first-child': { marginLeft: 0 } }}
+                tabindex="0"
+              >
                 <BarTabItem
+                  tabindex="0"
                   key={i}
                   css={{ backgroundColor: color }}
                   value={rangeMin}
@@ -33,7 +41,7 @@ function Info() {
           ))}
         </BarTabs>
         {apcaInfo.map(({ rangeMin, rangeMax, heading, body }) => (
-          <TabsPrimitive.TabsContent value={rangeMin}>
+          <TabsPrimitive.TabsContent value={rangeMin} tabindex="-1">
             <Box css={{ p: '$1', marginTop: '$3', marginRight: '$2' }}>
               <Box gap="xx-tight">
                 <Text size="8" weight="bold">

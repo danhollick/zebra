@@ -22,13 +22,13 @@ const InnerColor = ({ color }) => (
   >
     <path
       d="M0 72C19.8823 72 36 55.8823 36 36C36 16.1177 19.8823 0 0 0V72Z"
-      fill={`#${color}`}
+      fill={`${color}`}
     />
   </svg>
 )
 
 export const ContrastPreview = ({ foregroundColor, backgroundColor }) => (
-  <OuterColor css={{ backgroundColor: `#${backgroundColor}` }}>
+  <OuterColor css={{ backgroundColor }}>
     <InnerColor color={foregroundColor} />
   </OuterColor>
 )

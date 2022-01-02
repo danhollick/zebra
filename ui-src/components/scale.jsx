@@ -22,7 +22,7 @@ const Key = ({
     columns="auto-free"
     alignItems="center"
     justifySelf="center"
-    gap="tight"
+    gap="x-tight"
   >
     <Box
       alignItems="center"
@@ -77,7 +77,7 @@ function Scale() {
         <Key />
         <Key
           color="$yellow300"
-          label="Minimum"
+          label="Use with caution"
           icon={<ExclamationTriangleIcon />}
         />
         <Key color="$red400" label="Not suitable" icon={<Cross2Icon />} />

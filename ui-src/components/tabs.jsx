@@ -77,20 +77,20 @@ function Tabs() {
                   '&:last-child': { borderLeft: '1px solid $gray900' },
                 }}
               >
-                <StyledTabTrigger tabIndex="0" value={slug}>
+                <StyledTabTrigger tabindex="0" value={slug}>
                   {React.cloneElement(icon)}
                 </StyledTabTrigger>
               </Box>
             </TooltipWrapper>
           ))}
         </StyledTabList>
-        <StyledTabContent tabindex="-1" value="scale">
+        <StyledTabContent tabindex="0" value="scale">
           <Scale />
         </StyledTabContent>
-        <StyledTabContent tabindex="-1" value="comparison">
+        <StyledTabContent tabindex="0" value="comparison">
           <Comparison />
         </StyledTabContent>
-        <StyledTabContent tabindex="-1" value="info">
+        <StyledTabContent tabindex="0" value="info">
           <Info />
         </StyledTabContent>
       </TabsPrimitive.Tabs>

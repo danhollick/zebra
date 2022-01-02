@@ -23,7 +23,8 @@ export const Input = ({
   <StyledInput
     onChange={onChange}
     name={name}
-    value={value}
+    // remove the #
+    value={value.slice(1)}
     type={type}
     placeholder={placeholder}
   />
@@ -49,7 +50,7 @@ const ColorDotWithPicker = ({ color, onChange, position }) => {
   return (
     <Popover onOpenChange={onOpenChange}>
       <PopoverTrigger asChild>
-        <ColorDot css={{ backgroundColor: `#${color}` }} />
+        <ColorDot css={{ backgroundColor: `${color}` }} />
       </PopoverTrigger>
       <PopoverContent
         sideOffset={6}

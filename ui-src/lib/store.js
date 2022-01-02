@@ -2,8 +2,8 @@ import create from 'zustand'
 
 export const useStore = create((set, get) => ({
   selectionMode: 'none',
-  foregroundColor: 'ea7439',
-  backgroundColor: 'ffffff',
+  foregroundColor: '#ea7439',
+  backgroundColor: '#ffffff',
   contrast: '56',
   wcag: '2.9',
   sentiment: 'Weak',
@@ -19,30 +19,31 @@ export const useStore = create((set, get) => ({
   },
   changeForeground: evt => {
     let { value } = evt.target
-    if (value.startsWith('#')) {
-      value = value.slice(1)
+    if (!value.startsWith('#')) {
+      value = `#${value}`
     }
     set({ foregroundColor: value })
   },
   changeBackground: evt => {
     let { value } = evt.target
-    if (value.startsWith('#')) {
-      value = value.slice(1)
+    if (!value.startsWith('#')) {
+      value = `#${value}`
     }
     set({ backgroundColor: value })
   },
+
   changeBackgroundFromPicker: value => {
-    set({ backgroundColor: value.slice(1) })
+    set({ backgroundColor: value })
   },
   changeForegroundFromPicker: value => {
-    set({ foregroundColor: value.slice(1) })
+    set({ foregroundColor: value })
   },
   setSelectionColor: value => {
     const { selectionMode } = get()
     if (selectionMode === 'foreground') {
-      set({ foregroundColor: value.slice(1) })
+      set({ foregroundColor: value })
     } else if (selectionMode === 'background') {
-      set({ backgroundColor: value.slice(1) })
+      set({ backgroundColor: value })
     }
   },
   setSelectionMode: mode => {
