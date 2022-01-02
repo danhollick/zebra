@@ -2,6 +2,8 @@
 ⚠️ If you are looking to follow along with the `v1.0` tutorial you can find that [here](https://github.com/danhollick/zebra/tree/v1)⚠️
 
 ## Zebra is a fast, lightweight, APCA color contrast plugin
+![Screenshot 2022-01-02 at 13 06 11](https://user-images.githubusercontent.com/13898607/147876779-d63c76fd-66d1-4289-a50a-d06c52248c4a.png)
+
 
 ### What is APCA?
 APCA(Advanced Perceptual Contrast Algorithm) is a modern color contrast algorithm that aims to be be perceptually uniform. It is currently being evaluated as a part of the WCAG 3 draught process.
