@@ -1,44 +1,49 @@
-### Zebra is a fast, lightweight colour contrast checker plugin for Figma.
-![image](https://cdn-images-1.medium.com/max/800/1*DXkmk6IFQR0tKzCeKXTnJw.gif)
+#### Note: 
+⚠️ If you are looking to follow along with the `v1.0` tutorial you can find that [here](https://github.com/danhollick/zebra/tree/v1)⚠️
 
-This repo is split up into steps that track with a tutorial. Which can be found [here](https://medium.com/@danhollick/figma-plugin-tutorial-1-6-65fc2102506) or [here](https://alcohollick.com/writing/figma-plugin-tutorial-1-6/).
+## Zebra is a fast, lightweight, APCA color contrast plugin
+![Screenshot 2022-01-02 at 13 06 11](https://user-images.githubusercontent.com/13898607/147876779-d63c76fd-66d1-4289-a50a-d06c52248c4a.png)
 
-The plugin can be found [here](https://www.figma.com/c/plugin/806578669827234193/zebra)
 
+### What is APCA?
+APCA(Advanced Perceptual Contrast Algorithm) is a modern color contrast algorithm that aims to be be perceptually uniform. It is currently being evaluated as a part of the WCAG 3 draught process.
+
+Note: Because APCA is still being evaluated, it is likely that some aspects of the algorithm and scoring system will change between APCA versions.
+
+More info [here](https://github.com/Myndex/SAPC-APCA/blob/master/WhyAPCA.md)
+
+---
 ### Local Development:
-It should be pretty straight forward to run the plugin code from any of the steps in Figma as there are no dependencies, only dev dependencies for webpack and linting.
 
 #### Step 1
-Download or clone the repo.
+Download or clone the repo and run `npm install`
 
 #### Step 2
-Open Figma and in the menu go to `Plugins` -> `Development` -> `New Plugin`.
-![image](https://cdn-images-1.medium.com/max/800/1*4D2TPssw664SjCq2rLdLjA.png)
+- To build: `npm run build`
+- For production: `npm run build:production`
+- For development: `npm run dev`.
 
 #### Step 3
-Choose Link to Existing Plugin and find the zebra `manifest.json`
+Open Figma and in the menu go to `Plugins` -> `Development` -> `New Plugin`.
 
 #### Step 4
-Open `manifest.json` and change the 'main' and 'ui' fields to the step you want to run. ie:
+Choose Link to Existing Plugin and find the zebra `manifest.json`
 
-```
-"main": "step1/code.js",
-  "ui": "step1/ui.html"
-```
+---
 
-#### Note:
-The code in the **final** folder is bundled with webpack so to change any code in `final/src/...` you need to have node and npm working.
+### How stuff works
+This plugin uses a few key dependencies:
+- [react](https://reactjs.org) for rendering the UI.
+- [apca-w3](https://github.com/Myndex/apca-w3) for APCA contrast calculations.
+- [chroma-js](https://gka.github.io/chroma.js) to help with some color conversions.
+- [stitches](https://stitches.dev) for css in JS.
+- [radix-ui](https://www.radix-ui.com) for UI components.
+- [zustand](https://github.com/pmndrs/zustand) for state management.
 
-Run `npm install` in the main folder to install all the dev-dependencies including webpack.
+There are two dependencies entirely for building and bundling:
+- [vite](https://vitejs.dev) - A dev server that takes all the frontend code in `./ui-src` and spits it out into `./dist/index.js` via a script tag.
+- [esbuild](https://esbuild.github.io) - a bundler that takes all the Figma side code in `./plugin-src` and spits it our into `./dist/code.js` 
 
-After that is installed you can run `npx webpack --mode=development --watch` to run the development server in watch mode. This will refresh after each change you make.
 
-Alternatively you can run `npx webpack --mode=production` to build for production
-
-#### Credits:
-- 🙌  A lot of the code for checking colour contrast came from [the brilliant repo](https://github.com/LeaVerou/contrast-ratio) for [contrast-ratio.com](https://contrast-ratio.com/).
-- 👊 [Tanya Hirst](https://twitter.com/tanyathehuman) made the dope illustration of a zebra. You can check out [her dribbble here](https://dribbble.com/TanyaTheHuman).
-- 😍 The Figma team and their brilliant tool and [their brilliant docs](https://www.figma.com/plugin-docs/intro/) . A lot of the explanations were stolen from their docs site.
-- ❤️ Everyone on the Figma plugin slack . Searching through past issues helped a lot.
 
 
