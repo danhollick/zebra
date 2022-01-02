@@ -10,7 +10,7 @@ import { apcaInfo } from '../data/apcaInfo'
 function Info() {
   const contrast = useStore(state => state.contrast)
   const defaultTab = apcaInfo.filter(
-    item => item.rangeMin <= contrast && contrast < item.rangeMax
+    item => item.rangeMin <= contrast && contrast <= item.rangeMax
   )
 
   return (
