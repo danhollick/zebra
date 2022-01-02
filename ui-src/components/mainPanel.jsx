@@ -137,7 +137,7 @@ function MainPanel() {
         onClick={toggleExpand}
         css={{ position: 'absolute', right: '16px', bottom: '16px' }}
       >
-        <TooltipWrapper content="Expand UI">
+        <TooltipWrapper content="Expand/Collapse UI">
           <CaretSortIcon />
         </TooltipWrapper>
       </Box>

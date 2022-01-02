@@ -14,10 +14,10 @@ import { TooltipWrapper } from './Tooltip'
 
 const tabs = [
   {
-    name: 'Info',
-    icon: <InfoCircledIcon />,
-    slug: 'info',
-    tooltip: 'APCA levels',
+    name: 'Font Scale',
+    icon: <FontStyleIcon />,
+    slug: 'scale',
+    tooltip: 'Min font sizes',
   },
   {
     name: 'Comparison',
@@ -26,10 +26,10 @@ const tabs = [
     tooltip: 'Compare APCA and WCAG 2',
   },
   {
-    name: 'Font Scale',
-    icon: <FontStyleIcon />,
-    slug: 'scale',
-    tooltip: 'Min font sizes',
+    name: 'Info',
+    icon: <InfoCircledIcon />,
+    slug: 'info',
+    tooltip: 'APCA levels',
   },
 ]
 
@@ -66,7 +66,7 @@ const StyledTabContent = styled(TabsPrimitive.TabsContent, {
 function Tabs() {
   return (
     <Box css={{ border: '1px solid $gray900', borderTop: 'none' }}>
-      <TabsPrimitive.Tabs defaultValue="info">
+      <TabsPrimitive.Tabs defaultValue="scale">
         <StyledTabList>
           {tabs.map(({ icon, tooltip, slug }, i) => (
             <TooltipWrapper key={i} content={tooltip}>
