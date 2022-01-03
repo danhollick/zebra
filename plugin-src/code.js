@@ -44,11 +44,11 @@ function findFills(nodes) {
 figma.on('selectionchange', () => {
   if (selectionMode !== 'none') {
     const fills = findFills(figma.currentPage.selection)
-    console.log('selectionchange')
+    // console.log('selectionchange')
     if (fills[0] && fills[0].color) {
       const { r, g, b } = fills[0].color
       const selectionColor = chroma(r, g, b, 'gl')
-      console.log('fills', fills, selectionColor.hex())
+      // console.log('fills', fills, selectionColor.hex())
 
       figma.ui.postMessage({
         type: 'selectionChange',

@@ -17,7 +17,7 @@ function MainPanel() {
   const backgroundColor = useStore(state => state.backgroundColor)
   const foregroundColor = useStore(state => state.foregroundColor)
   const contrast = useStore(state => state.contrast)
-  // const sentiment = useStore(state => state.sentiment)
+  const sentiment = useStore(state => state.sentiment)
   const setContrast = useStore(state => state.setContrast)
   const swapColors = useStore(state => state.swapColors)
   const toggleExpand = useStore(state => state.toggleExpand)
@@ -126,9 +126,11 @@ function MainPanel() {
         </Box>
       </Box>
       <Box justifySelf="center" gap="none" justifyItems="center">
-        <Text css={{ lineHeight: '100%' }} size="8" weight="bold">
-          {contrast}
-        </Text>
+        <TooltipWrapper content={sentiment}>
+          <Text css={{ lineHeight: '100%' }} size="8" weight="bold">
+            {contrast}
+          </Text>
+        </TooltipWrapper>
         {/* <Text size="2" light>
           {sentiment}
         </Text> */}

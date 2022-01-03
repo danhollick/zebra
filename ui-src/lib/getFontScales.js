@@ -1,4 +1,8 @@
-import { fontSizeLookupTable, fontStyleLookupTable } from '../data/fontTable'
+import {
+  // altContrastLookup,
+  fontSizeLookupTable,
+  fontStyleLookupTable,
+} from '../data/fontTable'
 
 const mapRanges = (n, start1, stop1, start2, stop2, withinBounds) => {
   const newval = ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2

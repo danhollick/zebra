@@ -53,7 +53,7 @@ function Scale() {
           <FontStyleIcon />
           <Box direction="horizontal" columns="auto-free">
             <Text size="1" light weight="bold">
-              14px
+              12px
             </Text>
             <Text size="1" light css={{ justifySelf: 'end' }} weight="bold">
               96px
