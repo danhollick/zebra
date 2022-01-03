@@ -49,7 +49,7 @@ function Info() {
                 </Text>
                 <Text size="5">{heading}</Text>
               </Box>
-              <Text css={{ marginTop: '$2' }}>{body}</Text>
+              <Text css={{ marginTop: '$0' }}>{body}</Text>
             </Box>
           </TabsPrimitive.TabsContent>
         ))}
