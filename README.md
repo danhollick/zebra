@@ -1,7 +1,7 @@
 #### Note: 
 ⚠️ If you are looking to follow along with the `v1.0` tutorial you can find that [here](https://github.com/danhollick/zebra/tree/v1)⚠️
 
-## Zebra is a fast, lightweight, APCA color contrast plugin
+## Zebra is a lightweight, APCA color contrast plugin
 ![Screenshot 2022-01-02 at 13 06 11](https://user-images.githubusercontent.com/13898607/147876779-d63c76fd-66d1-4289-a50a-d06c52248c4a.png)
 
 
@@ -41,7 +41,7 @@ This plugin uses a few key dependencies:
 - [zustand](https://github.com/pmndrs/zustand) for state management.
 
 There are two dependencies entirely for building and bundling:
-- [vite](https://vitejs.dev) - A dev server that takes all the frontend code in `./ui-src` and spits it out into `./dist/index.js` via a script tag.
+- [vite](https://vitejs.dev) - A dev server that takes all the frontend code in `./ui-src` and spits it out into `./dist/index.html` via a script tag.
 - [esbuild](https://esbuild.github.io) - a bundler that takes all the Figma side code in `./plugin-src` and spits it our into `./dist/code.js` 
 
 
