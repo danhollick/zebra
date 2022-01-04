@@ -47,9 +47,11 @@ function Info() {
                 <Text size="8" weight="bold">
                   {rangeMin} - {rangeMax}
                 </Text>
-                <Text size="5">{heading}</Text>
+                <Text size="4">{heading}</Text>
               </Box>
-              <Text css={{ marginTop: '$0' }}>{body}</Text>
+              <Text size="2" css={{ marginTop: '$0' }}>
+                {body}
+              </Text>
             </Box>
           </TabsPrimitive.TabsContent>
         ))}

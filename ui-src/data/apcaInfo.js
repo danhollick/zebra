@@ -21,7 +21,7 @@ export const apcaInfo = [
     rangeMin: 45,
     rangeMax: 60,
     heading: 'Minimum level for any text.',
-    body: `The minimum for larger text (>24px normal weight or >19px bold) such as headlines, and large text that should be fluently readable. 
+    body: `The minimum for larger text (>24px normal weight or >19px bold) such as headlines, that should be fluently readable. 
 
     Also the minimum for pictograms with fine details, or smaller outline icons.
 
