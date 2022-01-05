@@ -4,6 +4,9 @@ import {
   Cross2Icon,
   ExclamationTriangleIcon,
   FontStyleIcon,
+  HeadingIcon,
+  LetterCaseCapitalizeIcon,
+  TextNoneIcon,
 } from '@radix-ui/react-icons'
 import { Box } from './Box'
 import { Text } from './Text'
@@ -13,7 +16,7 @@ import { BarGraph } from './BarGraph'
 import { fontWeights } from '../data/fontWeights'
 
 const Key = ({
-  icon = <CheckIcon />,
+  icon = <LetterCaseCapitalizeIcon />,
   label = 'Preferred',
   color = '$green300',
 }) => (
@@ -74,13 +77,9 @@ function Scale() {
         direction="horizontal"
         css={{ gridTemplateColumns: 'auto 1fr auto' }}
       >
-        <Key />
-        <Key
-          color="$yellow300"
-          label="Use with caution"
-          icon={<ExclamationTriangleIcon />}
-        />
-        <Key color="$red400" label="Not suitable" icon={<Cross2Icon />} />
+        <Key label="Fluently readable " />
+        <Key color="$yellow300" label="Spot readable " icon={<HeadingIcon />} />
+        <Key color="$red400" label="Not suitable" icon={<TextNoneIcon />} />
       </Box>
     </Box>
   )
